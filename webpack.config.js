@@ -1,4 +1,6 @@
 const path = require('path');
+const { ProvidePlugin } = require('webpack');
+const NodePolyfillWebpackPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -22,6 +24,15 @@ module.exports = {
     resolve: {
         fallback: {
             "fs": false
+        },
+        alias: {
+            process: 'process/browser'
         }
-    }
+    },
+    plugins: [
+        new ProvidePlugin({
+            process: 'process/browser'
+        }),
+        new NodePolyfillWebpackPlugin()
+    ]
 };
