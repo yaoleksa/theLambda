@@ -1,10 +1,10 @@
-import bcrypt from 'bcrypt';
+import { hash, compare } from 'bcryptjs';
 import DBcomunication from './db';
 
 export default class Auth {
     connection = DBcomunication();
     signUp(email, password) {
-        bcrypt.hash(password, 10, (err, hash) => {
+        hash(password, 10, (err, hash) => {
             if(err) {
                 console.error(err.message);
             }

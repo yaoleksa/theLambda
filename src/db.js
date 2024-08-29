@@ -7,11 +7,11 @@ dotenv.config();
 export default class DBcomunication {
     // Define constructor with database connection
     constructor() {
-        this.supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+        this.supabase = createClient(window.process.env.SUPABASE_URL, window.process.env.SUPABASE_KEY);
         // Auth with a database
         this.supabase.auth.signInWithPassword({
-            email: process.env.EMAIL,
-            password: process.env.PASSWORD
+            email: window.process.env.EMAIL,
+            password: window.process.env.PASSWORD
         }).then(response => {
             this.token = response.data.session.access_token;
             this.refresh_token = response.session.refresh_token;
