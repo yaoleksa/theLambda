@@ -1,5 +1,10 @@
 import Auth from './auth';
 
-const form = document.createElement('form');
+const btn = document.createElement('button');
+btn.innerText = 'Click me';
+btn.addEventListener('click', () => {
+    auth = new Auth();
+    auth.signUp('doom@org.com', 'xxx');
+});
 
-document.getElementById('root').appendChild(form);
+document.getElementById('root').appendChild(btn);

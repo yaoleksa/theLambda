@@ -6,7 +6,7 @@ export default class Auth {
     signUp(email, password) {
         hash(password, 10, (err, hash) => {
             if(err) {
-                console.error(err.message);
+                console.error(`An error has occured during sign up process: ${err.message}`);
             }
             this.connection.signUp(email, hash);
         });
