@@ -2,7 +2,7 @@ import { hash, compare } from 'bcryptjs';
 import DBcomunication from './db';
 
 export default class Auth {
-    connection = DBcomunication();
+    connection = new DBcomunication();
     signUp(email, password) {
         hash(password, 10, (err, hash) => {
             if(err) {
