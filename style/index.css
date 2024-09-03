@@ -1,6 +1,10 @@
 #login_form {
     display: flex;
 }
+#sign_up_form {
+    display: grid;
+    grid-template-columns: 1fr;
+}
 #welcome_widget {
     display: block;
     margin: 0 0 0 35%;
@@ -29,4 +33,12 @@
     border-width: 0.25%;
     border-color:aqua;
     background-color: aqua;
+}
+.credential {
+    margin: 3%;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.email {
+    background: url('../imgs/user-128.svg') no-repeat;
 }
