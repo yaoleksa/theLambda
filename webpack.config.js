@@ -1,5 +1,5 @@
 const path = require('path');
-const { ProvidePlugin } = require('webpack');
+const { ProvidePlugin, DefinePlugin } = require('webpack');
 const NodePolyfillWebpackPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
@@ -33,6 +33,14 @@ module.exports = {
         new ProvidePlugin({
             process: 'process/browser'
         }),
-        new NodePolyfillWebpackPlugin()
+        new NodePolyfillWebpackPlugin(),
+        new DefinePlugin({
+            'process.env': {
+                SUPABASE_URL: JSON.stringify('https://azxmmelolclqfcfjgpka.supabase.co'),
+                SUPABASE_KEY: JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF6eG1tZWxvbGNscWZjZmpncGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkwMTk0MTEsImV4cCI6MjAxNDU5NTQxMX0.nYQqwnBeFbD5qlQ6fpVxN8PH2Nvegtgga05wqEm3-y8'),
+                EMAIL: JSON.stringify('ekt_1@ukr.net'),
+                PASSWORD: JSON.stringify('notveryeasy4473')
+            }
+        })
     ]
 };
