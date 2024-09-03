@@ -1,3 +1,32 @@
-button {
-    margin: 25% 0 0 45%;
+#login_form {
+    display: flex;
+}
+#welcome_widget {
+    display: block;
+    margin: 0 0 0 35%;
+}
+#moto {
+    margin-left: 3%;
+    font-size: 2rem;
+    font-family: 'Nerko One';
+}
+.login_buttons {
+    width: 15%;
+    text-align: center;
+    border: solid;
+    border-radius: 55%;
+    border-width: 0.25%;
+    border-color: greenyellow;
+    background-color: greenyellow;
+    font-weight: bold;
+    margin: 2%;
+}
+.login_buttons:hover {
+    width: 15%;
+    text-align: center;
+    border: solid;
+    border-radius: 55%;
+    border-width: 0.25%;
+    border-color:aqua;
+    background-color: aqua;
 }
