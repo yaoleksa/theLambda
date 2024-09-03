@@ -28,7 +28,7 @@ function SignUp() {
             <input type='email' name='login' className='email'></input>
             </label>
             <label for='password' className='credential'>Password
-            <input type='password' name='passwiord'></input>
+            <input type='password' name='passwiord' className='password'></input>
             </label>
         </form>
     </>);
