@@ -30,7 +30,10 @@ function SignUp() {
             <label for='password' className='credential'>Password
             <input type='password' name='passwiord' className='password'></input>
             </label>
-            <input type='checkbox' onChange={showPassword}></input>
+            <label>
+                <img className='password_eye' src='./imgs/preview-show-interface-icon-free-vector.jpg'/>
+                <input type='checkbox' onChange={showPassword}></input>
+            </label>
             <input type="submit" value="Sign up" className='login_buttons'></input>
         </form>
     </>);
@@ -38,7 +41,13 @@ function SignUp() {
 
 function showPassword() {
     const pswdForm = document.getElementsByClassName('password')[0];
+    const pswdEye = document.getElementsByClassName('password_eye')[0];
     pswdForm.type = pswdForm.type == 'text' ? 'password' : 'text';
+    if(pswdEye.getAttribute('src') == './imgs/preview-show-interface-icon-free-vector.jpg') {
+        pswdEye.setAttribute('src', './imgs/121656219-hidden-from-view-eye-crossed-out-line-art-vector-icon-for-apps-and-websites.jpg');
+    } else {
+        pswdEye.setAttribute('src', './imgs/preview-show-interface-icon-free-vector.jpg');
+    }
 }
 
 function renderWithSignUp() {

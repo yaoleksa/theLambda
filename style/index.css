@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
+    margin: 10% 0 45% 35%;
 }
 #welcome_widget {
     display: block;
@@ -55,4 +56,9 @@
 }
 .password:focus {
     background: none;
+}
+.password_eye {
+    width: 2%;
+    height: 2%;
+    margin-left: 3%;
 }
