@@ -57,11 +57,39 @@ function renderWithSignUp() {
 function createUser(event) {
     event.preventDefault();
     const email = document.getElementsByClassName('email')[0].value;
-    if(!email.match(/.+\@.+\..+/)) {
+    const password = document.getElementsByClassName('password')[0].value;
+    // pass validation
+    if(!email.match(/.+\@.+\..+/g)) {
         alert('Invalid email');
         throw new Error('Invalid email value');
     }
-    new Auth().signUp(email, document.getElementsByClassName('password')[0].value);
+    if(!password.match(/[A-Z]+/g)) {
+        alert('Password must contain upper case letters');
+        throw new Error('Password must contain upper case letters');
+    }
+    if(!password.match(/[a-z]+/g)) {
+        alert('Password must contain lower case letters');
+        throw new Error('Password must contain lower case letters');
+    }
+    if(!password.match(/[0-9]+/g)) {
+        alert('Password must contain numbers');
+        throw new Error('Password must contain numbers');
+    }
+    if(password.length < 9) {
+        alert('Password must contain at least nine symbols');
+        throw new Error('Password must contain at least nine symbols');
+    }
+    const result = new Auth().signUp(email, password);
+    console.log(result);
+    if(result) {
+        root.render(<SignUpWelcomePage/>);
+    }
+}
+
+function SignUpWelcomePage() {
+    return (<>
+        <p>You've successfuly signed up</p>
+    </>);
 }
 
 root.render(<LoginPage />);

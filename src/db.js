@@ -3,7 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 export default class DBcomunication {
     // Define constructor with database connection
     constructor() {
-        console.log(process.env);
         this.supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
         // Auth with a database
         this.supabase.auth.signInWithPassword({
@@ -24,7 +23,9 @@ export default class DBcomunication {
             login: email,
             password: pswd
         }).then(response => {
-            console.log(response);
+            return response.status;
+        }).catch(error => {
+            return error.message;
         })
     }
 }
