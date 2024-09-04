@@ -30,8 +30,15 @@ function SignUp() {
             <label for='password' className='credential'>Password
             <input type='password' name='passwiord' className='password'></input>
             </label>
+            <input type='checkbox' onChange={showPassword}></input>
+            <input type="submit" value="Sign up" className='login_buttons'></input>
         </form>
     </>);
+}
+
+function showPassword() {
+    const pswdForm = document.getElementsByClassName('password')[0];
+    pswdForm.type = pswdForm.type == 'text' ? 'password' : 'text';
 }
 
 function renderWithSignUp() {

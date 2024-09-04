@@ -4,6 +4,7 @@
 #sign_up_form {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: center;
 }
 #welcome_widget {
     display: block;
@@ -41,11 +42,15 @@
 }
 .email {
     background: url('../imgs/user-128.svg') no-repeat;
+    width: 25%;
+    text-align: center;
 }
 .email:focus {
     background: none;
 }
 .password {
+    width: 25%;
+    text-align: center;
     background: url('../imgs/key-53.svg') no-repeat;
 }
 .password:focus {
