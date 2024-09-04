@@ -42,6 +42,12 @@
 .email {
     background: url('../imgs/user-128.svg') no-repeat;
 }
+.email:focus {
+    background: none;
+}
 .password {
     background: url('../imgs/key-53.svg') no-repeat;
+}
+.password:focus {
+    background: none;
 }
