@@ -8,7 +8,7 @@ export default class Auth {
             if(err) {
                 console.error(`An error has occured during sign up process: ${err.message}`);
             }
-            this.connection.signUp(hash, email);
+            return this.connection.signUp(hash, email);
         });
     }
 }

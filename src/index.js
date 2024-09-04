@@ -24,17 +24,17 @@ function LoginPage() {
 function SignUp() {
     return (<>
         <form id="sign_up_form">
-            <label for='login' className='credential'>Email / login
+            <label htmlFor='login' className='credential'>Email / login
             <input type='email' name='login' className='email'></input>
             </label>
-            <label for='password' className='credential'>Password
+            <label htmlFor='password' className='credential'>Password
             <input type='password' name='passwiord' className='password'></input>
             </label>
             <label>
                 <img className='password_eye' src='./imgs/preview-show-interface-icon-free-vector.jpg'/>
                 <input type='checkbox' onChange={showPassword}></input>
             </label>
-            <input type="submit" value="Sign up" className='login_buttons'></input>
+            <input type="submit" value="Sign up" className='login_buttons' onClick={createUser}></input>
         </form>
     </>);
 }
@@ -52,6 +52,16 @@ function showPassword() {
 
 function renderWithSignUp() {
     root.render(<SignUp />);
+}
+
+function createUser(event) {
+    event.preventDefault();
+    const email = document.getElementsByClassName('email')[0].value;
+    if(!email.match(/.+\@.+\..+/)) {
+        alert('Invalid email');
+        throw new Error('Invalid email value');
+    }
+    new Auth().signUp(email, document.getElementsByClassName('password')[0].value);
 }
 
 root.render(<LoginPage />);
