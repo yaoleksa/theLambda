@@ -1,6 +1,8 @@
-import { hashSync, compare } from 'bcryptjs';
+import { hashSync, compareSync } from 'bcryptjs';
 
 export default class Auth {
+
+    // hash plain password
     encodePassword(password) {
         return hashSync(password, 10, (err, hash) => {
             if(err) {
@@ -9,6 +11,16 @@ export default class Auth {
             }
             return hash;
         });
+    }
+
+    // compare plain password with hash
+    comparePasswords(password, hash) {
+        return compareSync(password, hash, (err, result) => {
+            if(err) {
+                console.error(err.message);
+            }
+            return result;
+        })
     }
 }
 

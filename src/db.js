@@ -24,4 +24,8 @@ export default class DBcomunication {
             password: pswd
         });
     }
+
+    async LogIn(email) {
+        return await this.supabase.from('users').select('password').eq('login', email).limit(1);
+    }
 }

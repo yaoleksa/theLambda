@@ -5,6 +5,7 @@ import Auth from './auth';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const db = new DBcomunication();
+const auth = new Auth();
 
 function LoginPage() {
     return (<>
@@ -106,18 +107,31 @@ function createUser(event) {
         alert('Password must contain at least nine symbols');
         throw new Error('Password must contain at least nine symbols');
     }
-    db.signUp(new Auth().encodePassword(password), email).then(response => {
+    db.signUp(auth.encodePassword(password), email).then(response => {
         if(response.status === 201) {
             root.render(<SignUpWelcomePage />);
         }
     });
 }
 
-function logInUser() {}
+function logInUser(event) {
+    const [email, password] = fetchCredential(event);
+    db.LogIn(email).then(response => {
+        if(auth.comparePasswords(password, response.data[0].password)) {
+            root.render(<LogInWelcomePage/>);
+        }
+    });
+}
 
 function SignUpWelcomePage() {
     return (<>
         <p>You've successfuly signed up</p>
+    </>);
+}
+
+function LogInWelcomePage() {
+    return (<>
+        <p>You've successfuly logged in</p>
     </>);
 }
 
