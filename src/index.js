@@ -1,8 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import React from 'react';
+import DBcomunication from './db';
 import Auth from './auth';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const db = new DBcomunication();
 
 function LoginPage() {
     return (<>
@@ -79,7 +81,11 @@ function createUser(event) {
         alert('Password must contain at least nine symbols');
         throw new Error('Password must contain at least nine symbols');
     }
-    const result = new Auth().signUp(email, password);
+    db.signUp(new Auth().encodePassword(password), email).then(response => {
+        if(response.status === 201) {
+            root.render(<SignUpWelcomePage />);
+        }
+    })
 }
 
 function SignUpWelcomePage() {
