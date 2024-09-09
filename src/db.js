@@ -18,14 +18,10 @@ export default class DBcomunication {
         })
     }
     // Define method to insert data into database
-    signUp(pswd, email) {
-        this.supabase.from('users').insert({
+    async signUp(pswd, email) {
+        return await this.supabase.from('users').insert({
             login: email,
             password: pswd
-        }).then(response => {
-            return response.status;
-        }).catch(error => {
-            return error.message;
-        })
+        });
     }
 }

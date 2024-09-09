@@ -80,10 +80,6 @@ function createUser(event) {
         throw new Error('Password must contain at least nine symbols');
     }
     const result = new Auth().signUp(email, password);
-    console.log(result);
-    if(result) {
-        root.render(<SignUpWelcomePage/>);
-    }
 }
 
 function SignUpWelcomePage() {
