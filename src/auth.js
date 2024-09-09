@@ -1,8 +1,8 @@
-import { hashSync, compare } from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 
 export default class Auth {
-    encodePassword(password) {
-        return hashSync(password, 10, (err, hash) => {
+    async encodePassword(password) {
+        return await hash(password, 10, (err, hash) => {
             if(err) {
                 console.error(err.message);
                 return `An error has occured during sign up process: ${err.message}`;
