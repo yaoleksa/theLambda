@@ -15,7 +15,7 @@ function LoginPage() {
                 <div className='login_buttons' onClick={renderWithSignUp}>
                     <p>SignUp</p>
                 </div>
-                <div className='login_buttons'>
+                <div className='login_buttons' onClick={renderWithLogIn}>
                     <p>LogIn</p>
                 </div>
             </div>
@@ -41,6 +41,24 @@ function SignUp() {
     </>);
 }
 
+function LogIn() {
+    return (<>
+        <form id="sign_up_form">
+            <label htmlFor='login' className='credential'>Email / login
+            <input type='email' name='login' className='email'></input>
+            </label>
+            <label htmlFor='password' className='credential'>Password
+            <input type='password' name='passwiord' className='password'></input>
+            </label>
+            <label>
+                <img className='password_eye' src='./imgs/preview-show-interface-icon-free-vector.jpg'/>
+                <input type='checkbox' onChange={showPassword}></input>
+            </label>
+            <input type="submit" value="Log In" className='login_buttons' onClick={logInUser}></input>
+        </form>
+    </>);
+}
+
 function showPassword() {
     const pswdForm = document.getElementsByClassName('password')[0];
     const pswdEye = document.getElementsByClassName('password_eye')[0];
@@ -56,10 +74,17 @@ function renderWithSignUp() {
     root.render(<SignUp />);
 }
 
-function createUser(event) {
+function renderWithLogIn() {
+    root.render(<LogIn />);
+}
+
+function fetchCredential(event) {
     event.preventDefault();
-    const email = document.getElementsByClassName('email')[0].value;
-    const password = document.getElementsByClassName('password')[0].value;
+    return [document.getElementsByClassName('email')[0].value, document.getElementsByClassName('password')[0].value];
+}
+
+function createUser(event) {
+    const [email, password] = fetchCredential(event);
     // pass validation
     if(!email.match(/.+\@.+\..+/g)) {
         alert('Invalid email');
@@ -85,8 +110,10 @@ function createUser(event) {
         if(response.status === 201) {
             root.render(<SignUpWelcomePage />);
         }
-    })
+    });
 }
+
+function logInUser() {}
 
 function SignUpWelcomePage() {
     return (<>
